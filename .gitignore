@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+*.log
+.env
+.env.*
+!.env.example
+coverage/
+playwright-report/
+test-results/
+tmp/
+.cache/
+
+# dist/ is deliberately committed: plugin installs must not need npm install.
+
+# Generated from the pinned PDF.js package during build.
+src/bundled-resources.mjs
