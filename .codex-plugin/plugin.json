@@ -1,0 +1,24 @@
+{
+  "name": "codex-cjk-pdf-viewer",
+  "version": "0.1.0",
+  "description": "Read original PDFs with bundled CJK character maps and fonts in the desktop file panel.",
+  "author": {
+    "name": "Kairu OTSUKA",
+    "url": "https://github.com/O-kAIru"
+  },
+  "repository": "https://github.com/O-kAIru/codex-cjk-pdf-viewer",
+  "homepage": "https://github.com/O-kAIru/codex-cjk-pdf-viewer#readme",
+  "license": "MIT",
+  "mcpServers": "./.mcp.json",
+  "requires_local_executor": true,
+  "interface": {
+    "displayName": "CJK PDF Viewer",
+    "shortDescription": "Read PDFs with Japanese text intact",
+    "longDescription": "A read-only PDF file handler with packaged CMaps and font resources. Opens the original PDF in the desktop thread panel without rewriting or rasterizing the source file.",
+    "developerName": "Kairu OTSUKA",
+    "category": "Productivity",
+    "capabilities": ["Read", "Interactive"],
+    "websiteURL": "https://github.com/O-kAIru/codex-cjk-pdf-viewer",
+    "defaultPrompt": ["Open this PDF with CJK PDF Viewer."]
+  }
+}

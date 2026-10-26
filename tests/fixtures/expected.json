@@ -1,0 +1,54 @@
+{
+  "fixture": "japanese-cid-multipage.pdf",
+  "sha256": "5e22623e53dbd68a1cd68494bd35961477fd08d3375d5bbf55c1b8f6cad4c6cc",
+  "pages": 2,
+  "japaneseFont": {
+    "baseFont": "HeiseiMin-W3",
+    "encoding": "UniJIS-UCS2-H",
+    "ordering": "Japan1",
+    "embedded": false,
+    "toUnicode": false
+  },
+  "expectedTextByPage": [
+    [
+      "日本語表示テスト",
+      "これは表示確認用のサンプルです。",
+      "次の選択肢から選んでください。",
+      "青い丸",
+      "赤い四角",
+      "文字を選択して検索できます。"
+    ],
+    [
+      "二ページ目の表示確認",
+      "ページ移動と拡大表示を確認します。",
+      "漢字、ひらがな、カタカナを表示します。",
+      "表示できれば成功です。"
+    ]
+  ],
+  "expectedLatin": [
+    "EMBEDDED LATIN: ABC xyz 0123456789",
+    "STANDARD LATIN: Helvetica, + - = ( )"
+  ],
+  "containsVectorShapes": true,
+  "containsSyntheticImage": true,
+  "fonts": [
+    {
+      "baseFont": "/Helvetica",
+      "subtype": "/Type1",
+      "encoding": "/WinAnsiEncoding",
+      "hasToUnicode": false
+    },
+    {
+      "baseFont": "/HeiseiMin-W3",
+      "subtype": "/Type0",
+      "encoding": "/UniJIS-UCS2-H",
+      "hasToUnicode": false
+    },
+    {
+      "baseFont": "/AAAAAA+BitstreamVeraSans-Roman",
+      "subtype": "/TrueType",
+      "encoding": "None",
+      "hasToUnicode": true
+    }
+  ]
+}

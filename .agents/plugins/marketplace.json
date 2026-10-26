@@ -1,0 +1,17 @@
+{
+  "name": "cjk-pdf-viewer-marketplace",
+  "interface": {
+    "displayName": "CJK PDF Viewer"
+  },
+  "plugins": [
+    {
+      "name": "codex-cjk-pdf-viewer",
+      "source": { "source": "local", "path": "./" },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

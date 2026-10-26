@@ -1,0 +1,8 @@
+{
+  "pdfjs": "5.4.296",
+  "counts": {
+    "cmaps": 168,
+    "fonts": 14,
+    "wasm": 2
+  }
+}
