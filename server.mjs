@@ -7,7 +7,7 @@ import { z } from "zod";
 // the bundled server so installed plugin packages are relocatable.
 const VIEWER_HTML = new URL("./viewer.html", import.meta.url);
 const UI_URI = "ui://codex-cjk-pdf-viewer/viewer-v1.html";
-const VERSION = "0.1.0";
+const VERSION = "0.1.1";
 
 async function main() {
   // Fail before initialization if a release does not contain its built viewer.

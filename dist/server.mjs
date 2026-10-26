@@ -31320,7 +31320,7 @@ var StdioServerTransport = class {
 // server.mjs
 var VIEWER_HTML = new URL("./viewer.html", import.meta.url);
 var UI_URI = "ui://codex-cjk-pdf-viewer/viewer-v1.html";
-var VERSION = "0.1.0";
+var VERSION = "0.1.1";
 async function main() {
   const html = await readFile(VIEWER_HTML, "utf8");
   const server = new McpServer({

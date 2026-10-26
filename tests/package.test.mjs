@@ -26,11 +26,11 @@ test("portable and compatibility packages launch the same self-contained build",
   assert.deepEqual(Object.keys(current), ["cjk-pdf-viewer"]);
   const server = current["cjk-pdf-viewer"];
   assert.equal(server.type, "stdio");
-  assert.equal(server.command, "node");
-  assert.deepEqual(server.args, ["${PLUGIN_ROOT}/dist/server.mjs"]);
+  assert.equal(server.command, "sh");
+  assert.deepEqual(server.args, ["${PLUGIN_ROOT}/bin/launch.sh"]);
   assert.equal(server.cwd, "${PLUGIN_ROOT}");
   assert.equal(server.env, undefined, "no credentials or machine-specific env required");
-  for (const filename of ["dist/server.mjs", "dist/viewer.html", "LICENSE"]) {
+  for (const filename of ["bin/launch.sh", "dist/server.mjs", "dist/viewer.html", "LICENSE"]) {
     assert.ok((await stat(resolve(ROOT, filename))).size > 0, filename);
   }
 });
@@ -49,4 +49,10 @@ test("marketplace resolves its plugin within the repository root", async () => {
   assert.equal(plugin.policy.installation, "AVAILABLE");
   assert.equal(plugin.policy.authentication, "ON_INSTALL");
   assert.equal(plugin.category, "Productivity");
+});
+
+test("portable stdio command is a bare executable or a contained relative path", async () => {
+  const config = await json("mcp.json");
+  const command = config.mcpServers["cjk-pdf-viewer"].command;
+  assert.ok(/^[^/\\]+$/.test(command) || /^\.\/[^.]/.test(command));
 });

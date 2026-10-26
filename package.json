@@ -1,6 +1,6 @@
 {
   "name": "codex-cjk-pdf-viewer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Offline original-file PDF viewer with bundled CJK character maps for Codex desktop.",
   "type": "module",

@@ -3,8 +3,10 @@
   "mcpServers": {
     "cjk-pdf-viewer": {
       "type": "stdio",
-      "command": "node",
-      "args": ["${PLUGIN_ROOT}/dist/server.mjs"],
+      "command": "sh",
+      "args": [
+        "${PLUGIN_ROOT}/bin/launch.sh"
+      ],
       "cwd": "${PLUGIN_ROOT}"
     }
   }

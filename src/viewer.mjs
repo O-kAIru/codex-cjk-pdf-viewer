@@ -25,7 +25,7 @@ let hostInputGeneration = 0;
 let passwordCallback = null;
 let loadTask = null;
 
-const app = new App({ name: 'CJK PDF Viewer', version: '0.1.0' });
+const app = new App({ name: 'CJK PDF Viewer', version: '0.1.1' });
 const openai = new OpenAIExtensions(app);
 
 function status(message, state = 'ready') {

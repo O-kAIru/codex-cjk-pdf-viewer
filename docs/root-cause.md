@@ -78,3 +78,19 @@ be checked separately; see [installation](installation.md).
 - [OpenAI file-extension entrypoint specification](https://github.com/openai/mcp-extensions/blob/main/docs/spec.md#file-extension-entrypoint)
 - [PDF.js document initialization options](https://mozilla.github.io/pdf.js/api/draft/module-pdfjsLib.html)
 - [Pinned PDF.js source release](https://github.com/mozilla/pdf.js/releases/tag/v5.4.296)
+
+## Desktop startup issue fixed in 0.1.1
+
+After installing 0.1.0, desktop application logs showed that this plugin failed
+to start with `MCP startup failed: No such file or directory (os error 2)`. The
+CLI's resolved MCP configuration confirmed that the plugin-root placeholders
+expanded correctly and the installed server file existed. Its command was bare
+`node`; the GUI process did not have that executable on its PATH. As a result,
+the custom file handler was unavailable and the normal PDF preview remained.
+
+The 0.1.1 Unix launcher resolves Node.js 22+ from conventional installed locations
+and NVM. A test using the actual manifest, a minimal GUI-like PATH, a relocated
+clean package, and no node_modules reproduces the old ENOENT and successfully
+initializes the new launcher. No application binary or global environment setting
+is changed. These startup checks complement, rather than replace, real PDF-tab
+acceptance testing.

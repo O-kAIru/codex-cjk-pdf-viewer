@@ -35,7 +35,9 @@ A host without that capability cannot use this original-file entrypoint.
 
 ## Public GitHub marketplace
 
-Prerequisite: Node.js 22 or later must be available to the plugin process.
+Prerequisites: macOS/Linux with `/bin/sh`, and an installed Node.js 22 or later.
+The launcher checks PATH, Homebrew standard locations, and NVM without sourcing
+profiles. Set `CJK_PDF_NODE` to an absolute runtime path when needed.
 
 ```sh
 node --version
@@ -77,9 +79,9 @@ The runtime entry points are:
 - `dist/viewer.html`: self-contained viewer HTML, including bundled renderer
   resources.
 
-The MCP configuration runs `node ${PLUGIN_ROOT}/dist/server.mjs` with
-`${PLUGIN_ROOT}` as its working directory. There are no required environment
-variables. Dependencies and dev tools in `node_modules/` are not needed for an
+The MCP configuration runs `sh ${PLUGIN_ROOT}/bin/launch.sh` with
+`${PLUGIN_ROOT}` as its working directory. There are no required environment variables. `CJK_PDF_NODE` is an optional
+explicit Node.js executable override. Dependencies and dev tools in `node_modules/` are not needed for an
 installed release.
 
 Root `plugin.json` and `mcp.json` use the portable Agent Plugins format. The
@@ -114,16 +116,27 @@ installed, and real desktop file entrypoint verified.
 
 ## Troubleshooting
 
-### `node` cannot be found
+### GUI applications do not inherit the Node/NVM PATH
 
-Install a supported Node.js release or make an existing Node.js 22+ executable
-available on the plugin process's PATH. Restart the app after an environment
-change. Do not alter the plugin to point to another person's absolute machine
-path in a public release.
+Version 0.1.0 launched bare `node` and could fail with `No such file or directory`
+when the desktop app did not inherit the terminal's PATH. Version 0.1.1 invokes
+`bin/launch.sh` through `/bin/sh` and discovers a supported installed runtime.
+It does not edit shell profiles, global PATH, HOME, or CODEX_HOME.
+
+If no supported runtime is found, install Node.js 22+ or supply `CJK_PDF_NODE`
+through your local server environment. Do not publish another person's absolute
+machine path in the plugin manifest.
+
+### Windows
+
+The automatic launcher in 0.1.1 targets macOS/Linux. The bundled Node server is
+portable, but Windows launcher integration is not verified in this release.
+An operator maintaining a Windows-specific local package can use `node` with
+`${PLUGIN_ROOT}/dist/server.mjs` as in 0.1.0, provided Node is on the host PATH.
 
 ### Built viewer file cannot be read
 
-Confirm that `dist/server.mjs` and `dist/viewer.html` are both present in the
+Confirm that `bin/launch.sh`, `dist/server.mjs`, and `dist/viewer.html` are all present in the
 installed copy. A source-only archive needs a development build; an official
 release of this repository should already contain the built files.
 

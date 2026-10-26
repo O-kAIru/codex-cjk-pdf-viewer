@@ -1,6 +1,6 @@
 {
   "name": "codex-cjk-pdf-viewer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Read original PDFs with bundled CJK character maps and fonts in the desktop file panel.",
   "author": {
     "name": "Kairu OTSUKA",

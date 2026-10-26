@@ -28,12 +28,19 @@ See the [root-cause investigation](docs/root-cause.md) for the reproduced failur
 ## Requirements
 
 - A ChatGPT desktop app / Codex version that supports OpenAI MCP file entrypoints.
-- Node.js **22 or later** available on the plugin process's `PATH`.
+- macOS or Linux with `/bin/sh`.
+- Node.js **22 or later**, installed on PATH, in a standard Homebrew location,
+  or under NVM. The launcher also accepts an explicit `CJK_PDF_NODE` path.
 - A PDF opened through the desktop host, so it can provide a host-managed file
   resource to the plugin.
 
 File entrypoints are desktop-only in the current OpenAI extension specification.
 Do not expect them to work on the web, iOS, Android, or in a headless CLI.
+
+Version 0.1.1 fixes startup in GUI applications that do not inherit an interactive
+shell's Node/NVM PATH. The launcher does not source shell profiles or change global
+environment settings. Automatic Windows launching is not yet supported by this
+Unix launcher; the renderer and bundled server themselves remain portable.
 
 ## Install from the GitHub marketplace
 
